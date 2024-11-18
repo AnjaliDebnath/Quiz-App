@@ -1,14 +1,13 @@
 :root {
-  --color-darkest: #343a40;
-  --color-dark: #495057;
-  --color-medium: #ced4da;
-  --color-light: #f1f3f5;
-
-  --color-theme: #1098ad;
-  --color-accent: #ffa94d;
+  --color-darkest: #ffffff; /* Light background */
+  --color-dark: #f8f9fa; /* Slightly off-white */
+  --color-medium: #6c757d; /* Neutral gray for text */
+  --color-light: #212529; /* Dark gray for contrast */
+  --color-theme: #007bff; /* Standard blue for primary actions */
+  --color-accent: #28a745; /* Green for success highlights */
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Codystar&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 * {
   margin: 0;
@@ -18,264 +17,161 @@
 
 html {
   font-size: 62.5%;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
+
 body {
   min-height: 100vh;
   color: var(--color-light);
-  background-color: var(--color-darkest);
+  background-color: var(--color-dark);
   padding: 2rem;
 }
+
 .wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 800px;
 }
+
 .app {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: calc(100vw - 30vw);
-  position: relative;
-}
-.headerWrapper {
-  position: relative;
-  top: -30%;
-}
-.main {
-  width: calc(80vmin);
-  margin: 0 auto;
-}
-
-.app-header {
-  width: calc(80%);
-  margin: 0 auto;
-  margin-bottom: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 2rem;
-  align-items: center;
-  justify-content: center;
-  column-gap: 3rem;
-}
-.error {
-  text-align: center;
-  font-size: 1.6rem;
-  font-weight: 500;
   padding: 2rem;
-  background-color: #495057;
-  border-radius: 100px;
+  background-color: var(--color-darkest);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
 }
 
-img {
-  width: calc(95vmin - 80vmin);
-  border-radius: 50%;
+.app:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+
 h1 {
-  font-family: "Codystar";
-  font-size: calc(100vmin - 93vmin);
+  font-size: 2.4rem;
   text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  color: var(--color-theme);
 }
+
 h2 {
-  font-size: calc(100vmin - 96vmin);
-  margin-bottom: 2rem;
+  font-size: 2.4rem; /* Increase the question text size */
+  margin-bottom: 2rem; /* Add space between the question text and the options */
   text-align: center;
-  color: rgb(0, 216, 255);
+  color: var(--color-light);
 }
 
 h3 {
-  font-size: calc(100vmin - 97.5vmin);
-  font-weight: 600;
-  margin-bottom: 4rem;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+  color: var(--color-medium);
+}
+
+.error {
+  background-color: var(--color-accent);
+  color: var(--color-darkest);
   text-align: center;
+  font-size: 1.6rem;
+  padding: 1rem;
+  border-radius: 5px;
 }
 
-h4 {
-  font-size: calc(100vmin - 96vmin);
-  font-weight: 600;
-  margin-bottom: 2.4rem;
+img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid var(--color-theme);
+  margin-bottom: 1rem;
 }
 
-.start {
+.options {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column; /* Align items in a column */
+  gap: 1.5rem; /* Add spacing between options */
+  width: 100%; /* Ensure options take up full width */
+  padding: 2rem 0; /* Add some padding for spacing */
 }
+
+.btn-option {
+  display: block; /* Make each option take full width */
+  text-align: center; /* Center-align text */
+  font-size: 1.8rem; /* Increase option text size */
+  color: var(--color-light);
+  background-color: var(--color-dark);
+  padding: 1.5rem; /* Add padding inside the button */
+  border: 1px solid var(--color-medium);
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  width: 100%; /* Stretch the button to full width of the container */
+}
+
+.btn-option:hover {
+  background-color: var(--color-theme); /* Change background on hover */
+  color: var(--color-darkest); /* Ensure text contrast */
+  transform: scale(1.02); /* Add a slight hover effect */
+}
+
+.btn-option.correct {
+  background-color: var(--color-theme);
+  border-color: var(--color-theme);
+  color: var(--color-light);
+}
+
+.btn-option.wrong {
+  background-color: red; /* Set the wrong option background to red */
+  border-color: red; /* Set the wrong option border to red */
+  color: var(--color-light); /* Text color for readability */
+}
+
+
+
 
 .progress {
-  margin-bottom: 4rem;
-  display: grid;
-  justify-content: space-between;
-  gap: 1.2rem;
-  grid-template-columns: auto auto;
-  font-size: calc(100vmin - 97vmin);
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
   color: var(--color-medium);
 }
 
 progress {
   -webkit-appearance: none;
   width: 100%;
-  height: 12px;
-  grid-column: 1 / -1;
+  height: 10px;
+  border-radius: 5px;
 }
 
 ::-webkit-progress-bar {
   background-color: var(--color-medium);
-  border-radius: 100px;
 }
+
 ::-webkit-progress-value {
   background-color: var(--color-theme);
-  border-radius: 100px;
-}
-.btn {
-  display: block;
-  font-family: inherit;
-  color: inherit;
-  font-size: calc(100vmin - 97vmin);
-  border: 2px solid var(--color-dark);
-  background-color: var(--color-dark);
-  padding: 1.2rem 2.4rem;
-  cursor: pointer;
-  border-radius: 100px;
-  transition: 0.3s;
-}
-.btn:not([disabled]):hover {
-  background-color: var(--color-darkest);
 }
 
-.btn-option:not([disabled]):hover {
-  transform: translateX(1.2rem);
-}
-
-.btn[disabled]:hover {
-  cursor: not-allowed;
-}
-
-.btn-ui {
-  float: right;
-}
-
-.options {
-  display: flex;
-  flex-direction: column;
-}
-
-.btn-option {
-  width: 100%;
-  text-align: left;
-  margin-bottom: 1rem;
-  font-size: calc(100vmin - 97vmin);
-  margin-left: -1rem;
-}
-
-.btn-option.correct {
-  background-color: var(--color-theme);
-  border: 2px solid var(--color-theme);
-  color: var(--color-light);
-}
-.btn-option.wrong {
-  background-color: var(--color-accent);
-  border: 2px solid var(--color-accent);
-  color: var(--color-darkest);
-}
-
-.answer {
-  transform: translateX (2rem);
-}
 .result_container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  background-color: var(--color-dark);
+  padding: 2rem;
+  border: 1px solid var(--color-medium);
+  border-radius: 8px;
 }
+
 .result {
-  background-color: var(--color-theme);
-  color: var(--color-light);
-  border-radius: calc(2vmin + 7px);
-  text-align: center;
-  padding: calc(2vmin + 11px) calc(2vmin + 9px);
-  font-size: calc(2vmin + 7px);
-  font-weight: 500;
-  margin-bottom: 1.6rem;
-}
-
-.result span {
-  display: block;
-  font-size: 2.2rem;
-  margin-right: 4px;
-}
-
-.highscore {
-  font-size: 1.8rem;
-  text-align: center;
-  margin-bottom: 4.8rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-theme);
+  margin-bottom: 1rem;
 }
 
 .loader-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 4rem;
-  gap: 1.6rem;
-
+  margin-top: 1.5rem;
   color: var(--color-medium);
   font-size: 1.4rem;
-}
-
-.timer {
-  float: left;
-  font-size: calc(100vmin - 97vmin);
-  color: var(--color-medium);
-  border: 2px solid var(--color-dark);
-  padding: 1.35rem 2.8rem;
-  border-radius: 100px;
-  margin-left: -2rem;
-}
-
-/* CREDIT: https://dev.to/afif/i-made-100-css-loaders-for-your-next-project-4eje */
-.loader {
-  width: 50px;
-  height: 24px;
-  background: radial-gradient(circle closest-side, currentColor 90%, #0000) 0%
-      50%,
-    radial-gradient(circle closest-side, currentColor 90%, #0000) 50% 50%,
-    radial-gradient(circle closest-side, currentColor 90%, #0000) 100% 50%;
-  background-size: calc(100% / 3) 12px;
-  background-repeat: no-repeat;
-  animation: loader 1s infinite linear;
-}
-
-@keyframes loader {
-  20% {
-    background-position: 0% 0%, 50% 50%, 100% 50%;
-  }
-  40% {
-    background-position: 0% 100%, 50% 0%, 100% 50%;
-  }
-  60% {
-    background-position: 0% 50%, 50% 100%, 100% 0%;
-  }
-  80% {
-    background-position: 0% 50%, 50% 50%, 100% 100%;
-  }
-}
-
-/* ********** */
-/* First counter example */
-.counter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 6rem;
-}
-
-.counter * {
-  font-size: inherit;
-  padding: 0.8rem;
 }
